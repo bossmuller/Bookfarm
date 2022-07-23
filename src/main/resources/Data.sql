@@ -1,0 +1,2 @@
+INSERT INTO AUTHOR(AUTHOR_ID,Author_Name,Phone_Number) VALUES (1,'Sam Jone', 25472222);
+INSERT INTO AUTHOR(AUTHOR_ID,Author_Name,Phone_Number) VALUES (2,'Sam Kerry', 2547333);
