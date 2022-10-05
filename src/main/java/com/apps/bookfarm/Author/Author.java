@@ -1,9 +1,6 @@
-package com.apps.bookfarm.Model;
+package com.apps.bookfarm.Author;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Entity
@@ -11,7 +8,7 @@ import javax.persistence.Table;
 
 public class Author {
     @Id
-
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name = "AUTHOR_ID")
     private Long authorId;
     @Column (name = "Author_Name")
@@ -19,9 +16,8 @@ public class Author {
     @Column (name="Phone_Number")
     private int phoneNumber;
 
-    public Author(Long authorId, String authorName, int phoneNumber) {
+    public Author(String authorName, int phoneNumber) {
         this.phoneNumber = phoneNumber;
-        this.authorId = authorId;
         this.authorName = authorName;
 
 

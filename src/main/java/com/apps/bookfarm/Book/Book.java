@@ -1,5 +1,7 @@
-package com.apps.bookfarm.Model;
+package com.apps.bookfarm.Book;
 
+
+import com.apps.bookfarm.Author.Author;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,13 +10,14 @@ import java.util.List;
 @Table (name= "Book")
 public class Book {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column( name ="Book_ID")
     private Long bookId;
     @Column(name="Book_Title")
     private String title;
-    @ManyToMany
+    @OneToOne
     @JoinColumn(name="AUTHOR_ID")
-    private List<Author>author;
+    private Author author;
     @Column (name = "Book_Publisher")
     private String Publisher;
     @Column (name = "Book_ISBN")
@@ -24,19 +27,22 @@ public class Book {
     @Column (name = "Book_Subject")
     private String subject;
 
-   public Book(Long bookId, String title,List<Author>author,String publisher,int isbn,int length,String subject){
+   public Book(String title,Author author,String Publisher,int isbn,int length,String subject){
        this.bookId =bookId;
        this.title = title;
        this.author=author;
-       this.Publisher= publisher;
+       this.Publisher= Publisher;
        this.isbn = isbn;
        this.length= length;
        this.subject= subject;
    }
-   public Book(){
 
-   }
-   public Long getBookId(){
+    public Book() {
+
+    }
+
+
+    public Long getBookId(){
        return bookId;
    }
    public void setBookId(Long bookId){
@@ -49,11 +55,11 @@ public class Book {
        this.title= title;
    }
 
-    public List<Author> getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(List<Author> author) {
+    public void setAuthor (Author author) {
         this.author = author;
     }
 
@@ -70,7 +76,8 @@ public class Book {
     }
 
     public void setIsbn(int isbn) {
-        this.isbn = isbn;
+
+       this.isbn = isbn;
     }
 
     public int getLength() {
