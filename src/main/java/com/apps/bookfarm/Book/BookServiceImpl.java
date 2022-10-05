@@ -35,17 +35,15 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public void removeBook(Long id) {
-//        List<Book> deleteBook = bookRepository.deleteByBookId();
-//        if (deleteBook.isEmpty()) {
-//            System.out.println("The does not exist");
-
-        //}
+        Optional<Book> bookToDelete = bookRepository.findById(id);
+      if (bookToDelete.isEmpty()) {
+           throw new IllegalStateException("The book does not exist");           }
          bookRepository.deleteById(id);
-
 }
 
     @Override
     public void updateBook(Book book) {
+
 
     }
 
